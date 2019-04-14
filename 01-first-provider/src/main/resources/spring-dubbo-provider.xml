@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--当前工程名称，将在监控平台使用-->
+    <dubbo:application name="01-first-provider" />
+
+    <!--注册service,其就是真正服务器提供者-->
+    <bean id="someService" class="com.nick.service.SomeServiceImpl"></bean>
+
+    <!--暴露服务，第一个程序采用直链的方式（register="N/A"）-->
+    <dubbo:service interface="com.nick.service.SomeService"
+                        ref="someService"
+                        registry="N/A"/>
+
+</beans>
