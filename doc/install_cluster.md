@@ -1,7 +1,22 @@
 # 安装zookeeper集群
 
 
+## 架构
 
+```
+
+[node1] ----[node2]
+  |          /
+  |         /
+  |        /  
+  |       /
+  |      /
+[node3]
+```
+
+如上图所示，准备3台centos主机。一台将会作为leader，其余2台被作为follower。
+
+## 安装步骤
 
 * 删除data目录下文件，添加文件/usr/data/zookeeper/myid，分别写入数字1,2,3
 
