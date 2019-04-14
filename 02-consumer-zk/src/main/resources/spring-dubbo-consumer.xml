@@ -7,11 +7,22 @@
 
 
     <!--声明zk服务器中心-->
+    <!--集群-->
     <dubbo:registry address="zookeeper://192.168.10.11:2181?backup=192.168.10.12:2181,192.168.10.13:2181,192.168.10.14:2181" />
 
+    <!--单体-->
     <!--<dubbo:registry address="zookeeper://192.168.10.11:2181" />-->
 
     <!--消费引用-->
+    <!--引用:基于服务级别的结果缓存-->
+    <!--<dubbo:reference  id="someService" cache="true"-->
+                      <!--interface="com.nick.service.SomeService"/>-->
+    <!--基于-->
     <dubbo:reference  id="someService"
-            interface="com.nick.service.SomeService"/>
+                      interface="com.nick.service.SomeService">
+        <dubbo:method name="hello" cache="lru" />
+    </dubbo:reference>
+
+    <!--<dubbo:reference  id="someService"-->
+                      <!--interface="com.nick.service.SomeService"/>-->
 </beans>

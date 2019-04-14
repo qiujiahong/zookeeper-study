@@ -10,8 +10,9 @@ public class RunConsumer  {
 
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring-dubbo-consumer.xml");
         SomeService service = (SomeService)ac.getBean("someService");
-        String ret = service.hello("Tom");
-        System.out.println("ret:"+ret);
+        System.out.println(service.hello("Tom"));
+        System.out.println(service.hello("Tom"));
+        System.out.println(service.hello("Jerry"));
 
     }
 }
