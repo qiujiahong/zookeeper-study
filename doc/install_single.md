@@ -73,6 +73,7 @@ source /etc/profile
 cd zookeeper/conf/
 cp zoo_sample.cfg zoo.cfg
 # 修改配置文件中的 ``dataDir=/usr/data/zookeeper``
+sed -i "s/dataDir.*/dataDir=\/usr\/data\/zookeeper/g" zoo.cfg 
 mkdir -p /usr/data/zookeeper
 ```
 
