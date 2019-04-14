@@ -14,9 +14,16 @@
 [node3]
 ```
 
-如上图所示，准备3台centos主机。一台将会作为leader，其余2台被作为follower。
+如上图所示，准备3台centos主机。一台将会作为leader，其余2台被作为follower。笔者三台主机ip如下：
 
-## 安装步骤
+```
+server.1=192.168.10.11
+server.2=192.168.10.12
+server.3=192.168.10.13
+```
+
+## 安装步骤(三台主机分别操作)
+
 
 * 删除data目录下文件，添加文件/usr/data/zookeeper/myid，分别写入数字1,2,3
 
@@ -38,12 +45,12 @@ server.2=192.168.10.12:2888:3888
 server.3=192.168.10.13:2888:3888
 ```
 
+* 启动集群
 
-## 启动集群
-
+```
 cd /opt/apps/zookeeper/bin
 ./zkServer.sh start 
-
+```
 *  查看状态
 
 ./zkServer.sh status
