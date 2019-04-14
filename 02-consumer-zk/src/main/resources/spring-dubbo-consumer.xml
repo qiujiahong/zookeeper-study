@@ -7,7 +7,9 @@
 
 
     <!--声明zk服务器中心-->
-    <dubbo:registry address="zookeeper://192.168.10.11:2181" />
+    <dubbo:registry address="zookeeper://192.168.10.11:2181?backup=192.168.10.12:2181,192.168.10.13:2181,192.168.10.14:2181" />
+
+    <!--<dubbo:registry address="zookeeper://192.168.10.11:2181" />-->
 
     <!--消费引用-->
     <dubbo:reference  id="someService"
