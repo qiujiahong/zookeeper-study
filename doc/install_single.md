@@ -86,3 +86,6 @@ cd /opt/apps/zookeeper/bin/
 ./zkServer.sh status
 ps -ef | grep zookeeper
 ```
+
+
+[快速安装脚本](https://github.com/qiujiahong/zookeeper-study/blob/master/doc/install.sh)
