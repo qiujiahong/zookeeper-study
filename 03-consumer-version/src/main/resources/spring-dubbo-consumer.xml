@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+    <!--当前工程的名称，监控中心的使用-->
+    <dubbo:application name="03-consumer-version"/>
+
+
+    <!--声明zk服务器中心-->
+    <!--集群-->
+    <dubbo:registry address="zookeeper://192.168.10.11:2181?backup=192.168.10.12:2181,192.168.10.13:2181,192.168.10.14:2181" />
+
+    <!--单体-->
+    <!--<dubbo:registry address="zookeeper://192.168.10.11:2181" />-->
+
+    <!--消费引用-->
+    <!--引用:基于服务级别的结果缓存-->
+    <dubbo:reference  id="someService" cache="true"
+                      interface="com.nick.service.SomeService"/>
+    <!--基于-->
+    <dubbo:reference  id="service"
+                      interface="com.nick.service.SomeService" version="2.0.0 ">
+        <dubbo:method name="hello" cache="lru"  />
+    </dubbo:reference>
+
+
+
+
+    <!--<dubbo:reference  id="someService"-->
+                      <!--interface="com.nick.service.SomeService"/>-->
+</beans>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--当前工程名称，将在监控平台使用-->
+    <dubbo:application name="03-provider-version" />
+
+    <!--注册service,其就是真正服务器提供者-->
+    <bean id="someService" class="com.nick.service.SomeServiceImpl"></bean>
+    <bean id="otherService" class="com.nick.service.OtherServiceImpl"></bean>
+
+    <!--声明zk服务器中心-->
+    <!--单体-->
+    <dubbo:registry address="zookeeper://192.168.10.11:2181?backup=192.168.10.12:2181,192.168.10.13:2181,192.168.10.14:2181" />
+    <!--集群-->
+    <!--<dubbo:registry address="zookeeper://192.168.10.11:2181" />-->
+    <!--<dubbo:registry protocol="zookeeper" address="192.168.11:2181" />-->
+
+    <!--暴露服务，将服务暴露给zk服务中心-->
+    <dubbo:service interface="com.nick.service.SomeService"
+                   ref="someService" version="1.0.0"/>
+
+    <dubbo:service interface="com.nick.service.SomeService"
+                   ref="otherService" version="2.0.0"/>
+
+
+
+
+
+
+</beans>
