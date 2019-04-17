@@ -46,10 +46,21 @@ spring.dubbo.registry=zookeeper://192.168.10.11:2181
 * 在service实现添加dubbo的@Service注解，以及@Component注解
 
 ```java
-
 @Service   //com.alibaba.dubbo.config.annotation.Service;
 @Component
-
 ```
+
+
+## 服务消费者
+
+
+* 添加zkClient依赖，dubbo与springboot整合依赖，common工程依赖。
+
+* 在入口上添加@EnableDubboConfigration注解，开启dubbo自动配置
+
+* 在主配置文件中加spring.application.name属性，指定提供者应用名称，添加spring.dubbo.registry属性，指定注册中心
+
+* 在处理Service成员变量上添加Reference注解，删除AutoWired注解 
+
 
 
